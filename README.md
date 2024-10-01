@@ -1,7 +1,7 @@
 # ***PyWeb - (Python Website Application)***
 ## *Được chạy bằng Flask với database MySQL*
 ### How to clone and run code:
-  - Open GIT BASH/Terminal.\n
+  - Open GIT BASH/Terminal.
   - Insert command:
     HTTPS: ```git clone https://github.com/nguyenfan20/PyWeb.git```
     SSH: ```git clone git@github.com:nguyenfan20/PyWeb.git```
@@ -9,9 +9,9 @@
   - Import database to MySQL Workbench.
   - Open CMD on computer or Terminal on VSCode.
   - Insert command:
-    ```cd \your-path```
+    +```cd \your-path```
   - Create virtual environment:
-    ```python -m venv venv```
+    +```python -m venv venv```
   - Activate vir.env:
     ```venv\Scripts\activate```
   - Download required modules:

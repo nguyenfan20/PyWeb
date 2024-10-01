@@ -1,7 +1,7 @@
-#***PyWeb - (Python Website Application)***
-##*Được chạy bằng Flask với database MySQL*
-###How to clone and run code:
-  - Open GIT BASH/Terminal.
+# ***PyWeb - (Python Website Application)***
+## *Được chạy bằng Flask với database MySQL*
+### How to clone and run code:
+  - Open GIT BASH/Terminal.\n
   - Insert command:
     HTTPS: ```git clone https://github.com/nguyenfan20/PyWeb.git```
     SSH: ```git clone git@github.com:nguyenfan20/PyWeb.git```

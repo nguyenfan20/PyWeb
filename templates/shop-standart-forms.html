@@ -1,0 +1,103 @@
+{% extends "layout/base.html" %}
+{% block content %}
+<div class="main">
+  <div class="container">
+    <ul class="breadcrumb">
+        <li><a href="/">Home</a></li>
+        <li><a href="/user-edit-account">My account</a></li>
+        <li class="active">Account information</li>
+    </ul>
+    <!-- BEGIN SIDEBAR & CONTENT -->
+    <div class="row margin-bottom-40">
+      <!-- BEGIN SIDEBAR -->
+      <div class="sidebar col-md-3 col-sm-3">
+        <ul class="list-group margin-bottom-25 sidebar-menu">
+          <li class="list-group-item clearfix" style="height: 100px; text-transform: initial;">
+            <div style="
+                                display: flex;
+                                justify-content: start;
+                                align-items: center;
+                                padding-bottom: 15px;
+                                border-bottom: 1px solid #dbdbdb;">
+                                    <img style="max-width: 60px;border-radius: 50%;" src="{{ url_for('static', filename = 'images/user.png') }}" alt="user">
+                                    <div style=" margin-left: 15px;">
+                                        <p style="padding: unset;font-weight: 600; margin-bottom: 2px;">{{current_user.name}}</p>
+                                        <span style="opacity: 0.5;"><span style="color: #556080;"><i class="fa fa-pencil"></i></span> Change info</span>
+                                    </div>
+                                </div>
+          </li>
+          <li class="list-group-item clearfix" style="height: 120px;">
+            <a href="" style="pointer-events: none; font-weight: bold;"
+              ><i class="fa fa-user" style="margin-right: 5px;"></i>My Account</a>
+              <ul style="list-style: none; padding: 0 20px;">
+                <li style="box-shadow: rgb(0 0 0 / 19%) 0px 5px 7px, rgb(0 0 0 / 23%) 0px 3px 3px;padding: 5px; border: 1px solid #e84d1c; margin: 5px 0; pointer-events: none;">
+                  <a style="text-transform: initial;" href="/user-edit-account">Profile</a>
+                </li>
+                <li><a style="text-transform: initial;" href="/user-change-password">Change password</a></li>
+              </ul>
+          </li>
+          <li class="list-group-item clearfix" style="height: 80px;">
+            <a href="" style="pointer-events: none; font-weight: bold;"
+              ><i class="fa fa-inbox" style="margin-right: 5px;"></i>My Orders</a>
+              <ul style="list-style: none;">
+                <li style="padding: 5px 0;"><a style="text-transform: initial;" href="/orders">Orders history</a></li>
+              </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- END SIDEBAR -->
+
+      <!-- BEGIN CONTENT -->
+      <div class="col-md-9 col-sm-7">
+        <h1 style="background: #e84d1c;padding: 5px;color: #fff;font-weight: 600;border-radius: 5px;box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;">My Profile</h1>
+        <div class="content-form-page" style="margin: unset;">
+          {% if err_msg %}
+              <div class = "alert alert-danger">
+                {{ err_msg }}
+              </div>
+              {% endif %}
+          <form role="form" class="form-horizontal form-without-legend" method="post">
+            <div class="form-group">
+              <label class="col-lg-2 control-label" for="last-name">User Name <span class="require">*</span></label>
+              <div class="col-lg-8">
+                <input type="text" id="username" class="form-control" name = "username" value="{{current_user.username}}" disabled>
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label" for="first-name">Full Name <span class="require">*</span></label>
+              <div class="col-lg-8">
+                <input type="text" id="fullname" class="form-control" name="fullname" value="{{current_user.name}}">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label" for="email">E-Mail <span class="require">*</span></label>
+              <div class="col-lg-8">
+                <input type="text" id="email" class="form-control" name = "email" value="{{current_user.email}}">
+              </div>
+            </div>
+            <div class="form-group">
+              <label class="col-lg-2 control-label" for="telephone">Telephone <span class="require">*</span></label>
+              <div class="col-lg-8">
+                <input type="text" id="telephone" class="form-control" name = "phone" value="{{current_user.phone}}">
+              </div>
+            </div>
+            <!-- <div class="form-group">
+              <label class="col-lg-2 control-label">File input</label>
+              <div class="col-lg-8">
+                <input type="file">
+              </div>
+            </div> -->
+            <div class="row">
+              <div class="col-lg-8 col-md-offset-2 padding-left-0 padding-top-20">
+                <button class="btn btn-primary" type="submit">Continue</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- END CONTENT -->
+    </div>
+    <!-- END SIDEBAR & CONTENT -->
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,128 @@
+<!-- BEGIN TOP BAR -->
+<div class="pre-header">
+  <div class="container">
+      <div class="row">
+          <!-- BEGIN TOP BAR LEFT PART -->
+          <div class="col-md-6 col-sm-6 additional-shop-info">
+              <ul class="list-unstyled list-inline">
+                  <li><i class="fa fa-phone"></i><a
+                    href="tel:1-847-555-5555">+1-800-267-0000</a></li>
+                  <!-- BEGIN CURRENCIES -->
+                  <li><i class="fa fa-envelope"></i><a href="mailto:info@laptopute.com">info@dentco.net</a></li>
+                  <!-- END CURRENCIES -->
+                  <!-- BEGIN LANGS -->
+                  <li class="langs-block">
+                      <a href="javascript:void(0);" class="current">English </a>
+                      <div class="langs-block-others-wrapper"><div class="langs-block-others">
+                        <a href="javascript:void(0);">French</a>
+                        <a href="javascript:void(0);">Germany</a>
+                        <a href="javascript:void(0);">Turkish</a>
+                      </div></div>
+                  </li>
+                  <!-- END LANGS -->
+              </ul>
+          </div>
+          <!-- END TOP BAR LEFT PART -->
+          <!-- BEGIN TOP BAR MENU -->
+          <div class="col-md-6 col-sm-6 additional-nav">
+              <ul class="list-unstyled list-inline pull-right">
+                {% if current_user.is_authenticated %}
+                  <li style="padding-left: 15px;
+                  font-weight: 900;border-right: solid 2px #e84d1c;border-left: solid 2px #e84d1c;"><a href="/user-edit-account">{{current_user.name}}</a></li>
+                  <li><a href="/user-logout">Log Out</a></li>
+                {% else %}
+                  <li style="padding-left: 15px;
+                  font-weight: 900;border-right: solid 2px #e84d1c;border-left: solid 2px #e84d1c;"><a href="/user-login">Log In</a></li>
+                  <li><a href="/user-register">Registration</a></li>
+                {% endif %}
+              </ul>
+          </div>
+          <!-- END TOP BAR MENU -->
+      </div>
+  </div>        
+</div>
+<!-- END TOP BAR -->
+
+<!-- BEGIN HEADER -->
+<div class="header">
+<div class="container">
+  <a class="site-logo" href="/"><img style="max-width: 112px;" src="{{ url_for('static', filename = 'images/logo_laptopute.png') }}" alt="Metronic Shop UI"></a>
+
+  <a href="javascript:void(0);" class="mobi-toggler"><i class="fa fa-bars"></i></a>
+
+  <!-- BEGIN CART -->
+  {% if current_user.is_authenticated %}
+  <div class="top-cart-block">
+    <div class="top-cart-info">
+      <a href="javascript:void(0);" class="top-cart-info-count"><span class = "badge badge-info" id="cartCounter">{{ cart_stats.total_quantity }}</span> items</a>
+      <a href="javascript:void(0);" class="top-cart-info-value">$ <span id = "cart_amount">{{ cart_stats.total_amount }}</span></a>  
+    </div>
+
+    <a href="/cart"><i class="fa fa-shopping-cart" style="position: absolute;top: 1px;right: 0;"></i></a>
+              
+  </div>
+  {% endif %}
+  <!--END CART -->
+
+  <!-- BEGIN NAVIGATION -->
+  <div class="header-navigation">
+    <ul>      
+      <li class="dropdown dropdown100 nav-catalogue">
+        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">
+          New
+        </a>
+        <ul class="dropdown-menu" style="position: absolute;min-width: 1000px;top: 92px;left: -115px;">
+          <li>
+            <div class="header-navigation-content">
+              <div class="row">
+                {% for c in new_products[:4] %}
+                <div class="col-md-3 col-sm-4 col-xs-6">
+                  <div class="product-item">
+                    <div class="pi-img-wrapper">
+                      <a href="/item-detail?product-id={{ c.id }}"><img src="{{c.image}}" class="img-responsive" alt="Berry Lace Dress"></a>
+                    </div>  
+                    <h3><a href="/item-detail?product-id={{ c.id }}">{{c.name}}</a></h3>
+                    <div class="pi-price">{{c.price}}</div>
+                    <a href="javascript:;" class="btn btn-default add2cart {% if c.amount|int==0 %}disabled{% endif %}" onclick="addToCart({{c.id}}, '{{c.name}}', {{c.price}}, '{{c.image}}')">Add to cart</a>
+                  </div>
+                </div>
+                {% endfor %}
+              </div>
+            </div>
+          </li>
+        </ul>
+      </li>
+      <li class="dropdown active">
+        <a class="dropdown-toggle" data-toggle="dropdown" data-target="#" href="#">BRANDS</a>
+        <ul class="dropdown-menu">
+          {% for c in brand %}
+          <li class="{% if bid %} {{ 'active' if c.id|int == bid|int else ' ' }} {% endif %}"><a href="/product-list?brand-id={{c.id}}">{{ c.name }}</a></li>         
+          {% endfor %} 
+        </ul>
+      </li>
+      <li><a href="/product-list">Products</a></li>
+      <!-- <li><a href="/admin" target="_blank">Admin</a></li> -->
+      <li><a href="/careers">Contact</a></li>
+
+      <!-- BEGIN TOP SEARCH -->
+      <li class="menu-search">
+        <span class="sep"></span>
+        <i class="fa fa-search search-btn"></i>
+        <div class="search-box">
+          <form action="/product-list">
+            <div class="input-group">
+              <input style="width: 105% !important;" type="text" placeholder="Search" class="form-control" name = "kw">
+              <span class="input-group-btn">
+                <button class="btn btn-primary" type="submit">Search</button>
+              </span>
+            </div>
+          </form>
+        </div> 
+      </li>
+      <!-- END TOP SEARCH -->
+    </ul>
+  </div>
+  <!-- END NAVIGATION -->
+</div>
+</div>
+<!-- Header END -->

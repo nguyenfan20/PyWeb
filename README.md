@@ -1,0 +1,3 @@
+- Login method (google...)??
+- Send mail after payment ??
+- Custom background 

@@ -1,0 +1,118 @@
+{% extends "layout/base.html" %} 
+{% block content %}
+<div class="main">
+  <div class="container">
+    <ul class="breadcrumb">
+      <li><a href="/">Home</a></li>
+      <li class="/user-login">Login</li>
+    </ul>
+    <!-- BEGIN SIDEBAR & CONTENT -->
+    <div class="row margin-bottom-40" style="display: flex; justify-content: center;">
+      <!-- BEGIN SIDEBAR -->
+      <!-- SIDEBAR CODE CÓ THỂ BỎ QUA -->
+      <!-- END SIDEBAR -->
+
+      <!-- BEGIN CONTENT -->
+      <div class="col-md-9 col-sm-9">
+        <div class="content-form-page">
+          <h1 style="font-weight: bold;margin-top: 15px;margin-left: 25px;">Login User</h1>
+          <div class="row" style="display: flex">
+            <div class="col-md-7 col-sm-7" style="border-right: 1px solid #ccc;">
+              {% if err_msg %}
+              <div class="alert alert-danger">{{ err_msg }}</div>
+              {% endif %}
+              
+              {% if 'profile' in session %}
+              <div class="alert alert-success">
+                Welcome back, {{ session['profile']['name'] }}! <br>
+                <a href="{{ url_for('profile') }}">Go to your profile</a>
+              </div>
+              {% else %}
+              <!-- BEGIN FORM -->
+              <form
+                class="form-horizontal form-without-legend"
+                role="form"
+                method="post"
+              >
+                <div class="form-group">
+                  <label for="email" class="col-lg-4 control-label"
+                    >Username<span class="require">*</span></label
+                  >
+                  <div class="col-lg-8">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="usrname"
+                      name="username"
+                    />
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="password" class="col-lg-4 control-label"
+                    >Password<span class="require">*</span></label
+                  >
+                  <div class="col-lg-8">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="password"
+                      name="password"
+                    />
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-lg-8 col-md-offset-4 padding-left-0">
+                    <a href="/user-forget-password">Forget Password?</a>
+                  </div>
+                </div>
+                <div class="row">
+                  <div
+                    class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20"
+                  >
+                    <button type="submit" class="btn btn-primary">Login</button>
+                  </div>
+                </div>
+                <div class="row" >
+                  <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-50">
+                    Don't have an Account?
+                    <a href="/user-register">Register</a>
+                  </div>
+                </div>
+              </form>
+              <!-- END FORM -->
+              {% endif %}
+            </div>
+            <div class="col-md-7 col-sm-7">
+              <!-- Login with Facebook -->
+              <div class="row" style="margin-bottom: 10px;">
+                <div style="padding: 0 30px;">
+                  <button style="background: #3b5998;width: 100%; border: 1px solid #121212;" class="btn btn-primary"><a href="{{ url_for('login_facebook') }}" style="letter-spacing: 1px;text-transform: initial;text-decoration: none; color:#f8f8f8;">
+                  <img style="max-height: 30px; margin-right: 8px;
+                  padding: 4px;" src="{{ url_for('static', filename = 'images/fb.png') }}"/>Login With Facebook</a></button>
+                </div>
+              </div>
+              <!-- Login with Apple -->
+              <div class="row" style="margin-bottom: 10px;">
+                <div style="padding: 0 30px;">
+                  <button style="background: #191919;width: 100%; border: 1px solid #121212;" class="btn btn-primary"><a href="/user-login/google" style="letter-spacing: 1px;text-transform: initial;text-decoration: none; color:#f8f8f8;">
+                  <img style="max-height: 30px; margin-right: 8px;
+                  padding: 4px;" src="{{ url_for('static', filename = 'images/apple.png') }}"/>Login With Apple</a></button>
+                </div>
+              </div>
+              <!-- Login with Google -->
+              <div class="row" style="margin-bottom: 10px;">
+                <div style="padding: 0 30px;">
+                  <button style="background: white;width: 100%; border: 1px solid #121212;" class="btn btn-primary"><a href="/user-login/google" style="letter-spacing: 1px;text-transform: initial;text-decoration: none; color:#6b6b6b;">
+                  <img style="max-height: 30px; margin-right: 8px" src="{{ url_for('static', filename = 'images/google.png') }}"/>Login With Google</a></button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- END CONTENT -->
+    </div>
+    <!-- END SIDEBAR & CONTENT -->
+  </div>
+</div>
+{% endblock %}

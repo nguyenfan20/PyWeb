@@ -1,0 +1,25 @@
+{% block header %}
+      {% include 'layout/layout_admin/header_admin.html' %}
+{% endblock %}
+
+<div class="clearfix">
+</div>
+<!-- BEGIN CONTAINER -->
+<div class="page-container">
+	{% include 'layout/layout_admin/sidebar_admin.html' %}
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			{% if current_user.is_authenticated %}
+				{% block body %}
+				{% endblock %}
+			{% else %}
+				{% include 'layout/layout_admin/login.html' %}
+			{% endif %}
+		</div>
+	</div>
+</div>
+<!-- END CONTAINER -->
+
+{% block footer %}
+      {% include "layout/layout_admin/footer_admin.html" %}
+{% endblock %}

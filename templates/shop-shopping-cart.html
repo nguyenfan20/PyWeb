@@ -1,0 +1,119 @@
+{% extends "layout/base.html" %}
+{% block content %}
+<div class="main">
+  <div class="container">
+    <!-- BEGIN SIDEBAR & CONTENT -->
+    <div class="row margin-bottom-40">
+      <!-- BEGIN CONTENT -->
+      <div class="col-md-12 col-sm-12">
+        <h1>Shopping cart</h1>
+        <div class="goods-page">
+          <div class="goods-data clearfix">
+            <div class="table-wrapper-responsive">
+              <table summary="Shopping cart">
+                <tr>
+                  <th class="goods-page-image">Image</th>
+                  <th class="goods-page-description">Description</th>
+                  <th class="goods-page-quantity">Quantity</th>
+                  <th class="goods-page-price">Unit price</th>
+                  <th class="goods-page-total" colspan="2">Total</th>
+                </tr>
+                  {% if not session.get('cart') %}
+                  <tr>
+                      <td colspan="5">Please add some products into Cart!!!</td>
+                  </tr>
+                  {% else %}
+                  {% for item in session['cart'].values() %}
+                <tr>
+                  <td class="goods-page-image">
+                    <a href="/item-detail?product-id={{ item.product_id }}"><img src="{{ item.product_image }}" alt="Berry Lace Dress"></a>
+                  </td>
+                  <td class="goods-page-description"> 
+                    <h3><a href="/item-detail?product-id={{ item.product_id }}">{{ item.product_name }}</a></h3>
+                    <p><strong>Chip: </strong>{{ item.product_chip }}</p>
+                    <p><strong>Ram: </strong>{{ item.product_ram }} GB</p>
+                  </td>
+                  <td class="goods-page-quantity">
+                    <div class="product-quantity">
+                        <input type="number" 
+                        value= "{{ item.quantity }}" 
+                        onblur= "updateCartItem(this, {{ item.product_id }})"
+                        class = "form-control" id="product-quantity">
+                      </div> 
+                  </td>
+                  <td class="goods-page-price">
+                    <strong><span>$</span>{{ item.product_price }}</strong>
+                  </td>
+                  <td class="goods-page-total">
+                    <strong><span>$</span>{{ item.product_price*item.quantity }}</strong>
+                  </td>
+                  <td class="del-goods-col">
+                    <a class="del-goods" value = "Xoa" ONclick= "deleteCartItem({{ item.product_id }})">&nbsp;</a>
+                  </td>
+                </tr>
+                {% endfor %}
+                {% endif %}
+              </table>
+            </div>
+
+            <div class="shopping-total">
+              {% if session.get('cart') %}
+                <ul>
+                  <li>
+                    <em>Number of products</em>
+                    <strong class="price"><span id = "cart_quantity">{{ cart_stats.total_quantity }}</span></strong>
+                  </li>
+                  <li class="shopping-total-price">
+                    <em>Total</em>
+                    <strong class="price"><span id = "cart_amount">${{ cart_stats.total_amount }}</span></strong>
+                  </li>
+                </ul>
+                
+              {% endif %}
+            </div>
+
+          </div>
+          <a href="/product-list"><button class="btn btn-default" type="submit">Continue shopping <i class="fa fa-shopping-cart"></i></button></a>
+          {% if current_user.is_authenticated %}
+            {% if session.get('cart') %}
+              <a href="/user-checkout" class="text-light"><button class="btn btn-primary" type="button">Checkout <i class="fa fa-check"></i></button></a> 
+              {% endif %}
+          {% else %}
+            <a href="/user-login?next=/cart">Login to finish payment</a>
+          {% endif %}
+        </div>
+      </div>
+      <!-- END CONTENT -->
+    </div>
+    <!-- END SIDEBAR & CONTENT -->
+
+    <!-- BEGIN SIMILAR PRODUCTS -->
+    <div class="row margin-bottom-40">
+      <div class="col-md-12 col-sm-12">
+        <h2>Most popular products</h2>
+        <div class="owl-carousel owl-carousel4">
+          
+          {% for p in bestseller_products %}
+          <div>
+            <div class="product-item">
+              <div class="pi-img-wrapper">
+                <img src="{{p.image}}" class="img-responsive" alt="Berry Lace Dress">
+                <div>
+                  <a href="{{ p.image }}" class="btn btn-default fancybox-button">Zoom</a>
+                  <a href="#product-pop-up" class="btn btn-default fancybox-fast-view">View</a>
+                </div>
+              </div>
+              <h3><a href="/item-detail?product-id={{ p.id }}">{{p.name}}</a></h3>
+              <div class="pi-price">${{p.price}}</div>
+              <a href="javascript:;" class="btn btn-default add2cart {% if p.amount|int==0 %}disabled{% endif %}" onclick="addToCart({{p.id}}, '{{p.name}}', {{p.price}}, '{{p.image}}', '{{p.chip}}', {{p.ram}})">Add to cart</a>
+            </div>
+          </div>
+          {% endfor %}
+        
+        </div>
+      </div>
+    </div>
+    <!-- END SIMILAR PRODUCTS -->
+  </div>
+</div>
+{% endblock %}

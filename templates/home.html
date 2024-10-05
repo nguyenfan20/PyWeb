@@ -409,8 +409,9 @@
   <div class="container">
         <div class="owl-carousel owl-carousel6-brands">
         {% for b in brand %}
-          <a href="/product-list?brand-id={{b.id}}"><img src="{{ b.icon}}" alt="canon" title="canon" style="width:120px;height:120px;object-fit: contain;padding: 15px;"></a>
-        {% endfor %}
+        <a href="/product-list?brand-id={{ b.id }}">
+          <img src="{{b.icon}}" alt="{{ b.name }}" title="{{ b.name }}" style="width:120px;height:120px;object-fit: contain;padding: 15px;">
+      </a>        {% endfor %}
         </div>
     </div>
 </div>

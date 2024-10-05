@@ -143,7 +143,7 @@ def login_facebook():
     redirect_uri = url_for('facebook_authorize', _external=True)
     return facebook.authorize_redirect(redirect_uri)
 
-@app.route('/user-login/callback')
+@app.route('/user-login/facebook/callback')
 def facebook_authorize():
     token = facebook.authorize_access_token()
     resp = facebook.get('https://graph.facebook.com/me?fields=id,name,email')

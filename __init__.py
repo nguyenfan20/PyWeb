@@ -45,11 +45,11 @@ app.config["PAYPAL-SANDBOX-CLIENT-SECRET"] = "EJSfWZBrSsHIkqFwB-jPlgpFQNlaw5BG2T
 
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
-app.config['MAIL_USERNAME'] = 'nguyenphan0705v@gmail.com'
-app.config['MAIL_PASSWORD'] = '0908989739by'
+app.config['MAIL_USERNAME'] = 'lop9a522tainguyen@gmail.com'
+app.config['MAIL_PASSWORD'] = 'ypce vwkc qhhe vztw'
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
-app.config['MAIL_DEFAULT_SENDER'] = ('Laptop UTE', 'nguyenphan0705v@gmail.com')
+app.config['MAIL_DEFAULT_SENDER'] = ('Laptop UTE', 'lop9a522tainguyen@gmail.com')
 
 app.config["PAGE_SIZE"] = 9
 db = SQLAlchemy(app=app)
@@ -108,11 +108,11 @@ momo = {
 #     # Setup OAuth and Mail configurations
 #     app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 #     app.config['MAIL_PORT'] = 587
-#     app.config['MAIL_USERNAME'] = 'nguyenphan0705v@gmail.com'
-#     app.config['MAIL_PASSWORD'] = '0908989739by'
+#     app.config['MAIL_USERNAME'] = 'lop9a522tainguyen@gmail.com'
+#     app.config['MAIL_PASSWORD'] = 'ypce vwkc qhhe vztw'
 #     app.config['MAIL_USE_TLS'] = True
 #     app.config['MAIL_USE_SSL'] = False
-#     app.config['MAIL_DEFAULT_SENDER'] = ('Laptop UTE', 'nguyenphan0705v@gmail.com')
+#     app.config['MAIL_DEFAULT_SENDER'] = ('Laptop UTE', 'lop9a522tainguyen@gmail.com')
 
 #     # Initialize extensions
 #     db.init_app(app)

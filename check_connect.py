@@ -8,7 +8,7 @@ def check_database_tables():
     port = '3306'
     database = 'tmdt'
 
-    connection_string = f'mysql+pymysql://root:admin@localhost/tmdt?charset=utf8mb4'
+    connection_string = f'mysql+pymysql://root:123456@localhost/tmdt?charset=utf8mb4'
     # Tạo engine như trước
     engine = create_engine(connection_string)
     

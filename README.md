@@ -41,6 +41,20 @@ Run web:
 
     flask run
 
-## How to push code to github
+## How to run test
 
-1) 
+### 1) Batch Execution: 
+Execute all scripts together in a batch to test the end-to-end
+functionality:
+1. Install pytest-html (run in terminal after start venv)
+
+		pip install pytest-html
+		
+2. Run tests with HTML report generation
+	
+		pytest --html=report.html
+
+3. Open the HTML report
+		After the tests finish running, **a report.html file will be generated.**
+		
+	Open it in any web browser to see a detailed, color-coded report of your test results.

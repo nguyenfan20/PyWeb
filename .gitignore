@@ -1,0 +1,8 @@
+# Bỏ qua thư mục __pycache__
+__pycache__/
+
+# Bỏ qua tất cả các file .log
+*.log
+
+# Bỏ qua file venv
+venv

@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 8.0.26, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: tmdt
 -- ------------------------------------------------------
--- Server version	8.0.26
+-- Server version	8.0.39
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -21,13 +21,13 @@
 
 DROP TABLE IF EXISTS `brand`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb3 */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `brand` (
   `id` int NOT NULL AUTO_INCREMENT,
-  `name` varchar(10) COLLATE utf8_unicode_ci NOT NULL,
-  `icon` varchar(100) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `name` varchar(10) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci NOT NULL,
+  `icon` varchar(100) CHARACTER SET utf8mb3 COLLATE utf8mb3_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb3 COLLATE=utf8mb3_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -36,7 +36,7 @@ CREATE TABLE `brand` (
 
 LOCK TABLES `brand` WRITE;
 /*!40000 ALTER TABLE `brand` DISABLE KEYS */;
-INSERT INTO `brand` VALUES (1,'Dell','static/images/brand/logo_dell.png'),(2,'Lenovo','static/images/brand/logo_lenovo.jpg'),(3,'HP','static/images/brand/logo_hp.jpg'),(4,'Acer','static/images/brand/logo_acer.jpg'),(5,'MSI','static/images/brand/logo_dell.png'),(6,'Apple','static/images/brand/logo_apple.jpg'),(7,'Razer','static/images/brand/logo_razor.jpg'),(8,'Samsung','static/images/brand/logo_samsung.jpg'),(9,'Asus','static/images/brand/logo_asus.jpg'),(10,'MSI','static/images/brand/logo_msi.png');
+INSERT INTO `brand` VALUES (1,'Dell','static/images/brand/logo_dell.png'),(2,'Lenovo','static/images/brand/logo_lenovo.jpg'),(3,'HP','static/images/brand/logo_hp.jpg'),(4,'Acer','static/images/brand/logo_acer.jpg'),(5,'MSI','static/images/brand/logo_dell.png'),(6,'Apple','static/images/brand/logo_apple.jpg'),(9,'Asus','static/images/brand/logo_asus.jpg');
 /*!40000 ALTER TABLE `brand` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -49,4 +49,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-21 12:43:11
+-- Dump completed on 2024-10-09 14:10:06

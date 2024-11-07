@@ -29,7 +29,7 @@ def test_update_profile(driver):
 #Test đổi mật khẩu với mật khẩu cũ không đúng
 def test_wrong_old_pwd(driver):
     valid_account(driver)
-    driver.find_element(By.XPATH, f"//a[contains(text(), 'Nguyen Phan')]").click()
+    driver.find_element(By.XPATH, f"//a[contains(text(), 'Phan Tai Nguyen')]").click()
     driver.find_element(By.XPATH, f"//a[contains(text(), 'Change password')]").click()
     driver.find_element(By.ID, "old-password").send_keys("12345")
     driver.find_element(By.ID, "new-password").send_keys("standardpwd")
@@ -41,7 +41,7 @@ def test_wrong_old_pwd(driver):
 #Test đổi mật khẩu
 def test_change_pwd(driver):
     valid_account(driver)
-    driver.find_element(By.XPATH, f"//a[contains(text(), 'Nguyen Phan')]").click()
+    driver.find_element(By.XPATH, f"//a[contains(text(), 'Phan Tai Nguyen')]").click()
     driver.find_element(By.XPATH, f"//a[contains(text(), 'Change password')]").click()
     driver.find_element(By.ID, "old-password").send_keys("admin")
     driver.find_element(By.ID, "new-password").send_keys("12345")

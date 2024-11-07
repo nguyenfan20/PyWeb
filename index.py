@@ -319,7 +319,7 @@ def cart():
 @app.route("/api/add-item-cart", methods = ["POST"]) 
 def add_to_cart():
     cart = session.get(CART_KEY) #<- key là "cart"
-    # Nếu chưa bỏ j vào giở
+    # Nếu chưa bỏ j vào giỏ
     if not cart:
         cart = {}
     

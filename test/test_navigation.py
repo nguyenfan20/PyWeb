@@ -26,7 +26,7 @@ def test_detail_product_navigation(driver):
 def test_contact_navigation(driver):
     driver.get("http://127.0.0.1:5000/careers")
     time.sleep(2)
-    assert "Laptop UTE" in driver.title
+    assert "Laptop UTE's Contact" in driver.title
 
 #Test trang admin
 def test_admin_navigation(driver):

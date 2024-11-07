@@ -8,7 +8,7 @@ def test_registration(driver):
     driver.get("http://127.0.0.1:5000/")
     driver.find_element(By.XPATH, f"//a[contains(text(), 'Registration')]").click()
     driver.find_element(By.ID, "fullname").send_keys("Standard User1")
-    driver.find_element(By.ID, "username").send_keys("standard1312") #Nhớ thay đổi username và email mỗi khi chạy để tránh bị lỗi
+    driver.find_element(By.ID, "username").send_keys("standard2012") #Nhớ thay đổi username và email mỗi khi chạy để tránh bị lỗi
     driver.find_element(By.ID, "phone").send_keys("0123456789")
     driver.find_element(By.ID, "email").send_keys("example123@example123.vn")
     driver.find_element(By.ID, "password").send_keys("123456")
@@ -38,7 +38,7 @@ def test_exist_username_registration(driver):
     driver.get("http://127.0.0.1:5000/")
     driver.find_element(By.XPATH, f"//a[contains(text(), 'Registration')]").click()
     driver.find_element(By.ID, "fullname").send_keys("Standard User")
-    driver.find_element(By.ID, "username").send_keys("standard1312")
+    driver.find_element(By.ID, "username").send_keys("standard2012")
     driver.find_element(By.ID, "phone").send_keys("0123456789")
     driver.find_element(By.ID, "email").send_keys("example123@example.vn")
     driver.find_element(By.ID, "password").send_keys("123456")

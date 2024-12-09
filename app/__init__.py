@@ -14,7 +14,7 @@ import os
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 
 
-app = Flask(__name__)
+app = Flask(__name__, template_folder="../templates", static_folder='../static')
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:admin@localhost/tmdt?charset=utf8mb4"
 # app.config["SQLALCHEMY_DATABASE_URI"] = "mysql+pymysql://root:tuan0512@localhost/tmdt?charset=utf8mb4"

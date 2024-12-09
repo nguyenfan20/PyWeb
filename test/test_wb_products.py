@@ -1,8 +1,8 @@
 import pytest
 import os
-from .. import app, db
-from ..models import Product
-from ..utils import get_product
+from app import app, db
+from app.models import Product
+from app.utils import get_product
 from sqlalchemy.orm import scoped_session
 
 

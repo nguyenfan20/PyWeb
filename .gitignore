@@ -6,3 +6,6 @@ __pycache__/
 
 # Bỏ qua file venv
 venv
+
+#Bỏ qua file .vscode
+.vscode

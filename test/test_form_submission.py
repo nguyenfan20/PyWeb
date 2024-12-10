@@ -1,5 +1,5 @@
 #TEST GỬI FORM
-from driver import *
+from .driver import *
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 import time

@@ -1,9 +1,9 @@
 # TEST THANH TOÁN
-from driver import *
+from .driver import *
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 import time
-from test_add_to_cart import test_add_multiple_products_to_cart
+from .test_add_to_cart import test_add_multiple_products_to_cart
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC

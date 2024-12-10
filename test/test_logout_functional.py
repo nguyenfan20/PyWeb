@@ -1,5 +1,5 @@
 #TEST ĐĂNG XUẤT
-from driver import *
+from .driver import *
 from selenium.webdriver.common.by import By
 import time
 

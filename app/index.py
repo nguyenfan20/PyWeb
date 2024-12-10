@@ -274,8 +274,9 @@ def detail():
     product_id = request.args.get("product-id")
     product = utils.get_productbyid(pid=product_id)
 
+    if not product:
+        return "Product not found", 404
     similar_products = utils.get_product(brand_id=product.brand_id)
-
     return render_template('item-detail.html',
                             this_product = product,
                             similar_products = similar_products)

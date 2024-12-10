@@ -126,3 +126,16 @@ def test_invalid_inputs(test_session):
 def test_edge_cases(test_session):
     products = get_product(page=9999)
     assert len(products) == 0
+
+def test_advanced_filters(test_session):
+    products = get_product(
+        kw="Laptop",  
+        brand_id=3,   
+        sort="hightolow",  
+        page=1        
+    )
+    assert len(products) <= app.config["PAGE_SIZE"], f"Expected products <= {app.config['PAGE_SIZE']}, but got {len(products)}"
+    assert all("Laptop" in p.name for p in products), "Expected all products to contain 'Laptop' in their name"
+    assert all(p.brand_id == 3 for p in products), "Expected all products to have brand_id = 3"
+    prices = [p.price for p in products]
+    assert prices == sorted(prices, reverse=True), "Expected prices to be sorted in descending order"

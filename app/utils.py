@@ -48,6 +48,9 @@ def get_product(kw=None, brand_id=None, page = None, sort = None):
         else:
             products = products.order_by(Product.price.desc())
 
+    if not products:
+        return None
+
     if page:
         size = app.config["PAGE_SIZE"]
         start = (page-1)*size

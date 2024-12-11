@@ -32,4 +32,24 @@ def test_invalid_search(driver):
     result = driver.find_element(By.XPATH, f"//img[@alt='']").get_attribute("src")
     assert "/static/images/no-product.jpg" in result
 
+#Test tìm kiếm với nhập khoảng trắng
+def test_search_with_space(driver):
+    driver.get("http://127.0.0.1:5000/")
+    driver.find_element(By.XPATH, f"//i[@class='fa fa-search search-btn']").click()
+    driver.find_element(By.CLASS_NAME, "form-control").send_keys("  ")
+    driver.find_element(By.XPATH, f"//button[@type='submit']").click()
+    time.sleep(2)
+    result = driver.find_element(By.XPATH, f"//img[@alt='']").get_attribute("src")
+    assert "/static/images/no-product.jpg" in result
+    print("Không tìm thấy sản phẩm nào!")
 
+#Test tìm kiếm với nhập tên sản phẩm cùng khoảng trắng
+def test_search_with_name_space(driver):
+    driver.get("http://127.0.0.1:5000/")
+    driver.find_element(By.XPATH, f"//i[@class='fa fa-search search-btn']").click()
+    driver.find_element(By.CLASS_NAME, "form-control").send_keys("Dell  ")
+    driver.find_element(By.XPATH, f"//button[@type='submit']").click()
+    time.sleep(2)
+    result = driver.find_element(By.XPATH, f"//img[@alt='']").get_attribute("src")
+    assert "/static/images/no-product.jpg" in result
+    print("Không tìm thấy sản phẩm với tên như trên!")

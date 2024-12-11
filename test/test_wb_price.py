@@ -57,8 +57,8 @@ def test_details_do_not_match(mock_receiptsbyuid, mock_receiptdetail):
 
 
 # Test Case 5: Kiểm tra với hóa đơn và chi tiết bị trùng
-@patch('utils.get_receiptsbyuid', return_value=[{'id': 1}])
-@patch('utils.get_receiptdetail', return_value=[
+@patch('app.utils.get_receiptsbyuid', return_value=[{'id': 1}])
+@patch('app.utils.get_receiptdetail', return_value=[
     {'receitp_id': 1, 'quantity': 2, 'unit_price': 50},
     {'receitp_id': 1, 'quantity': 2, 'unit_price': 50},
 ])
